@@ -19,7 +19,12 @@ class TodoItemsController < ApplicationController
 
 	def complete
 		@todo_item.update_attribute(:completed_at, Time.now)
-		redirect_to @todo_list, notice: "Todo item completed"
+		redirect_to @todo_list, notice: "Todo item marked"
+	end
+
+	def uncomplete
+		@todo_item.update_attribute(:completed_at, nil)
+		redirect_to @todo_list, notice: "Todo item unmarked"
 	end
 
 	private
