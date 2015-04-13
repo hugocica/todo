@@ -1,3 +1,5 @@
 $("#listing_items").html("<%=  escape_javascript(render @todo_list.todo_items) %>");
 $("#render_partial_form").slideDown(350);
-$('#todo_item_content').val("")
+
+if ('<%= params[:action] %>' == 'create')
+	$('#todo_item_content').val("")
