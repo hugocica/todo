@@ -4,7 +4,10 @@ class TodoItemsController < ApplicationController
 
 	def create
 		@todo_item = @todo_list.todo_items.create(todo_item_params)
-		redirect_to @todo_list
+		# redirect_to @todo_list
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def destroy
@@ -14,20 +17,31 @@ class TodoItemsController < ApplicationController
 			flash[:error] = "Todo List item could not be deleted."
 		end
 		
-		redirect_to @todo_list
+		# redirect_to @todo_list
+		update_view
 	end
 
 	def complete
 		@todo_item.update_attribute(:completed_at, Time.now)
-		redirect_to @todo_list, notice: "Todo item marked"
+		# redirect_to @todo_list, notice: "Todo item marked"
+
+		update_view
 	end
 
 	def uncomplete
 		@todo_item.update_attribute(:completed_at, nil)
-		redirect_to @todo_list, notice: "Todo item unmarked"
+		# redirect_to @todo_list, notice: "Todo item unmarked"
+
+		update_view
 	end
 
 	private
+
+	def update_view
+		respond_to do |format|
+			format.js { render template: "todo_items/create.js.erb" }
+		end
+	end
 
 	def set_todo_list
 		@todo_list = TodoList.find(params[:todo_list_id])

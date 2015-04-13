@@ -14,8 +14,10 @@
  *= require_self
  */
 
- $white_opaque: rgba(250, 250, 250, .3);
- $dark: #1F7972;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+$white_opaque: rgba(250, 250, 250, .3);
+$dark: #1F7972;
 
 * {
 	box-sizing: border-box;
@@ -96,39 +98,42 @@ body {
 }
 
 #todo_items_wrapper {
-	.row {
-		width: 100%;
-		border-top: 1px solid rgba(250,250,250, .3);
-		border-bottom: 1px solid rgba(250,250,250, .3);
-		.complete {
-			width: 10%;
-			float: left;
-			text-align: center;
-			border-right: 1px solid rgba(250,250,250, .3);
-			padding: 1em 0;
-		}
-		.todo_item {
-			width: 80%;
-			float: left;
-			p {
-				margin: 0;
-				padding: 1em;
-				color: $dark;
-				font-weight: 100;
+	#listing_items {
+		.row {
+			width: 100%;
+			border-top: 1px solid rgba(250,250,250, .3);
+			border-bottom: 1px solid rgba(250,250,250, .3);
+			margin-left: 0!important;
+			.complete {
+				width: 10%;
+				float: left;
+				text-align: center;
+				border-right: 1px solid rgba(250,250,250, .3);
+				padding: 1em 0;
 			}
-		}
-		.trash {
-			width: 10%;
-			float: left;
-			text-align: center;
-			border-left: 1px solid rgba(250,250,250, .3);
-			padding: 1em 0;
-		}
-		i {
-			color: white;
-			transition: all .4s ease-in-out;
-			&:hover {
-				color: $dark;
+			.todo_item {
+				width: 80%;
+				float: left;
+				p {
+					margin: 0;
+					padding: 1em;
+					color: $dark;
+					font-weight: 100;
+				}
+			}
+			.trash {
+				width: 10%;
+				float: left;
+				text-align: center;
+				border-left: 1px solid rgba(250,250,250, .3);
+				padding: 1em 0;
+			}
+			i {
+				color: white;
+				transition: all .4s ease-in-out;
+				&:hover {
+					color: $dark;
+				}
 			}
 		}
 	}
@@ -172,6 +177,23 @@ body {
 	color: white;
 	a {
 		color: white;
+	}
+	.btn-default {
+		background: rgba(250,250,250,.4);
+		color: $dark;
+		outline: none;
+		border: none;
+		height: 35px;
+		margin: 0 5px;
+		border-radius: 4px;
+		width: 15%;
+		display: inline-block;
+		transition: all .4s ease-in-out;
+		cursor: pointer;
+		&:hover {
+			background: $dark;
+			color: #fff;
+		}
 	}
 }
 
