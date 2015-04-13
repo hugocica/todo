@@ -5,9 +5,8 @@ class TodoItemsController < ApplicationController
 	def create
 		@todo_item = @todo_list.todo_items.create(todo_item_params)
 		# redirect_to @todo_list
-		respond_to do |format|
-			format.js
-		end
+		
+		update_view
 	end
 
 	def destroy
