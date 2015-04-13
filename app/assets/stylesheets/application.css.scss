@@ -196,7 +196,25 @@ body {
 		}
 	}
 }
-
+.actions {
+	text-align: center;
+	input[type="submit"] {
+			background: rgba(250,250,250,.4);
+			outline: none;
+			border: none;
+			height: 40px;
+			border-radius: 4px;
+			width: 25%;
+			display: inline-block;
+			transition: all .4s ease-in-out;
+			cursor: pointer;
+			color: $dark;
+			&:hover {
+				background: $dark;
+				color: #fff;
+			}
+		}
+}
 .forms {
 	padding: 0 5%;
 }
