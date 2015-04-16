@@ -10,14 +10,12 @@ class TodoItemsController < ApplicationController
 	end
 
 	def destroy
-		if @todo_item.destroy
-			flash[:success] = "Todo List item was deleted."
-		else
-			flash[:error] = "Todo List item could not be deleted."
-		end
+		@todo_item.destroy
 		
 		# redirect_to @todo_list
-		update_view
+		respond_to do |format|
+			format.js { render layout: false, template: "todo_items/create.js.erb" }
+		end
 	end
 
 	def complete
@@ -32,6 +30,11 @@ class TodoItemsController < ApplicationController
 		# redirect_to @todo_list, notice: "Todo item unmarked"
 
 		update_view
+	end
+
+	def sort
+		@todo_item.update_attribute(:position, params[:position])
+		render :nothing => true
 	end
 
 	private
@@ -51,7 +54,7 @@ class TodoItemsController < ApplicationController
 	end
 
 	def todo_item_params
-		params[:todo_item].permit(:content)
+		params[:todo_item].permit(:content, :position)
 	end
 
 end

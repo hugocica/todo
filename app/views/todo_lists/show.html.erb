@@ -4,9 +4,9 @@
 <p class="todo_list_sub_title"><%= @todo_list.description %></p>
 
 <div id="todo_items_wrapper">
-	<div id="listing_items">
-		<%= render @todo_list.todo_items %>
-	</div>
+	<ul id="listing_items" data-update-position="<%= todo_list_url %>">
+		<%= render @todo_list.todo_items.order('position') %>
+	</ul>
 	<div id="form">
 		<%= render "todo_items/form" %>
 	</div>

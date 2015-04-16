@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -98,6 +99,10 @@ body {
 
 #todo_items_wrapper {
 	#listing_items {
+		padding: 0;
+		li {
+			list-style: none;
+		}
 		.row {
 			width: 100%;
 			border-top: 1px solid rgba(250,250,250, .3);
@@ -251,3 +256,10 @@ input[type="submit"] {
 	}
 }
 ::-webkit-input-placeholder { color: $dark; }
+
+i.fa.fa-bars {
+	position: relative;
+	right: 18px;
+	font-size: 14px;
+	cursor: move;
+}

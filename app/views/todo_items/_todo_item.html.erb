@@ -1,8 +1,8 @@
-<div class="row clearfix">
+<li id="<%= todo_item.id %>" class="row clearfix">
 	<% if todo_item.completed? %>
 		<div class="complete">
 			<%= link_to uncomplete_todo_list_todo_item_path(@todo_list, todo_item.id), remote: true, method: :patch do %>
-				<i style="opacity: 0.4;" class="fa fa-check"></i>
+				<i style="opacity: 0.4;" class="fa fa-check-square-o"></i>
 			<% end %>
 		</div>
 		<div class="todo_item">
@@ -16,7 +16,7 @@
 	<% else %>
 		<div class="complete">
 			<%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), remote: true, method: :patch do %>
-				<i class="fa fa-check"></i>
+				<i class="fa fa-square-o"></i>
 			<% end %>
 		</div>
 		<div class="todo_item">
@@ -28,4 +28,4 @@
 			<% end %>
 		</div>
 	<% end %>
-</div>
+</li>

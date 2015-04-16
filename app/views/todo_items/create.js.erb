@@ -1,5 +1,5 @@
-$("#listing_items").html("<%=  escape_javascript(render @todo_list.todo_items) %>");
-$("#render_partial_form").slideDown(350);
+$("#listing_items").html("<%=  escape_javascript(render @todo_list.todo_items.order('position')) %>");
+$("#listing_items").slideDown("slow");
 
 if ('<%= params[:action] %>' == 'create')
-	$('#todo_item_content').val("")
+	$('#todo_item_content').val("");
