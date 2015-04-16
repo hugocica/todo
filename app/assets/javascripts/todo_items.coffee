@@ -5,6 +5,7 @@
 jQuery ->
 	$('#listing_items').sortable
 		axis: 'y'
+		cancel: '.todo_item'
 		update: ->
 			position = 1
 			list_path = $(this).data('update-position')
@@ -17,4 +18,14 @@ jQuery ->
 					data: "position="+position
 				position++
 
+	$('.todo_item').blur ->
+		content = $(this).text()
+		id_master = $('#listing_items').data('update-position')
+		id = $(this).parent().attr('id')
+		$.ajax
+			url: '/todo_lists/'+id_master+"/todo_items/"+id+"/update_content/"
+			type: 'post'
+			data: 'id='+id+"&content="+content
+	
 	$('#todo_item_content').attr('autocomplete', 'off')
+

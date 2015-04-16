@@ -37,6 +37,11 @@ class TodoItemsController < ApplicationController
 		render :nothing => true
 	end
 
+	def update_content
+		@todo_item.update_attribute(:content, params[:content])
+		render :nothing => true
+	end
+
 	private
 
 	def update_view
